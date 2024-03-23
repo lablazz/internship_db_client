@@ -1,0 +1,36 @@
+.txtwrap {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 150px 1fr;
+}
+
+.cardHeader {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 100px 1fr 30px;
+    cursor: pointer;
+    > .id {
+        border-right: 2px solid #303030;
+    }
+    > .name {
+        padding-left: 1.5vmin;
+    }
+    > .iconContainer {
+        display: flex;
+        justify-content: center;
+
+        > .icon {
+            color: #fff;
+        }
+        > .icon:hover {
+            color: #fff;
+        }
+    }
+}
+.cardBody {
+    margin-top: 1vmin;
+    display: var(--view);
+    background: #fff;
+    padding: 1vmin;
+    border-radius: 10px;
+}

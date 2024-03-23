@@ -1,0 +1,88 @@
+.welcomeCard {
+    background: #B4E4FF;
+    margin-bottom: 1.5vmin;
+}
+
+.userinfoContainer {
+    width: 100%;
+    height: fit-content;
+    background: #B4E4FF;
+    border-radius: 10px;
+    padding: 1vmin;
+    margin-bottom: 1.5vmin;
+}
+.userinfoContainer .txtwrap {
+    display: grid;
+    grid-template-columns: 15% auto 7.55%;
+    align-items: center;
+    height: 50px;
+    > h3 {
+        padding-left: 1vmin;
+        text-wrap: wrap;
+    }
+    > h4 {
+        background: #fff;
+        height: 90%;
+        display: flex;
+        align-items: center;
+        padding-left: 2vmin;
+        border-radius: 10px;
+    }
+    > .edit {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        > .icon {
+            width: 2.75vmin;
+            height: 2.75vmin;
+            color: #303030;
+            cursor: pointer;
+        }
+    }
+}
+.reset-btn {
+    width: 100%;
+    height: 50px;
+    background: #ffb4b4;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+form.reset-zone {
+    background: #ffdada;
+    padding: 1vmin;
+    margin: 0 1vmin;
+    border-radius: 0 0 10px 10px;
+    > .inpBox {
+        width: 100%;
+        /* background: #ffb4b4; */
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: 1vmin;
+        > input {
+            padding: .5vmin;
+            border-radius: 10px;
+            border: none;
+            /* background: #ffb4b4; */
+        }
+        > input:focus {
+            outline: none;
+        }
+    }
+    > button {
+        width: 100%;
+        padding: .5vmin;
+        border: none;
+        cursor: pointer;
+        margin-top: 1vmin;
+        border-radius: 10px;
+    }
+    > button#active {
+        background: #ffb4b4;
+    }
+    > button#unactive {
+        background: #bbbbbb;
+        cursor: unset;
+    }
+}

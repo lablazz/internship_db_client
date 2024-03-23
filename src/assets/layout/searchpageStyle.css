@@ -1,0 +1,136 @@
+.filterContainer {
+    width: 100%;
+    /* background: green; */
+    position: sticky;
+    top: var(--headerHeight);
+    z-index: 95;
+}
+.filterContainer .searchBar {
+    padding: 1.5vmin;
+    border-radius: 10px;
+    background: var(--color);
+    display: grid;
+    grid-template-columns: 1.8fr .1fr .1fr;
+    width: inherit;
+}
+.filterContainer .searchBar .inputBar,
+.filterContainer .searchBar .confirmBox,
+.filterContainer .searchBar .toggleBox {
+    display: grid;
+    place-items: center;
+}
+.filterContainer .searchBar .confirmBox,
+.filterContainer .searchBar .toggleBox {
+    cursor: pointer;
+}
+
+.filterContainer .searchBar .confirmBox .icon,
+.filterContainer .searchBar .toggleBox .icon {
+    color: #303030;
+}
+
+.filterContainer .searchBar .confirmBox {
+    border: none;
+    outline: none;
+    background: none;
+}
+
+.filterContainer .searchBar .inputBar input {
+    width: 100%;
+    padding: 1vmin;
+    border-radius: 10px;
+    border: none;
+}
+.filterContainer .searchBar .inputBar input:focus {
+    outline: none;
+}
+.filterContainer .searchBar .confirmBox .icon,
+.filterContainer .searchBar .toggleBox .icon {
+    width: 3vmin;
+    height: 3vmin;
+}
+
+/* expan */
+
+.filterContainer .expanZone {
+    display: none !important;
+    flex-direction: column;
+    padding: 2vmin;
+    margin: 0 1.5vw;
+    color: var(--color);
+    background: #303030;
+    border-radius: 0 0 10px 10px;
+}
+.filterContainer .expanZone .internTypeBox,
+.filterContainer .expanZone .coTypeBox {
+    display: grid;
+    grid-template-columns: 0.9fr repeat(2, 1.05fr);
+    align-items: center;
+    width: 100%;
+}
+.filterContainer .expanZone .wrap {
+    display: flex;
+    gap: max(2vw, 10px);
+}
+.filterContainer .expanZone .wrap p {
+    display: grid;
+    place-items: center;
+}
+
+.filterContainer #active.expanZone {
+    display: flex !important;
+}
+.filterContainer .expanZone .prvBox {
+    width: 100%;
+}
+.filterContainer .expanZone .prvBox #prv {
+    width: 100%;
+    padding: .5vmin;
+    border-radius: 10px;
+}
+.filterContainer .expanZone .prvBox #prv:focus {
+    outline: none;
+}
+.filterContainer .expanZone .checkBox {
+    width: 100%;
+    padding: .25vmin;
+    margin-top: .5vmin;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.filterContainer .expanZone .switchBox {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 5%;
+}
+.filterContainer .expanZone .switchBox p {
+    color: var(--switch);
+}
+.queryResult {
+    width: 100%;
+    height: fit-content;
+    padding: 2vmin;
+}
+.scrollButton {
+    position: fixed;
+    bottom: 3vmin;
+    right: 3vmin;
+    width: 4vmin;
+    height: 4vmin;
+    cursor: pointer;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 3px solid #fff; /* Outer border */
+    outline: 3px solid #303030; /* Inner border */
+}
+.scrollButton .icon {
+    color: #303030;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

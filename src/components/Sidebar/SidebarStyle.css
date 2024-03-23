@@ -1,0 +1,7 @@
+.icon {
+  color: #f8f1e5;
+}
+.icon:hover,
+#active.icon {
+  color: var(--color);
+}

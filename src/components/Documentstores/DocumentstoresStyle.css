@@ -1,0 +1,52 @@
+.documentStoreContainer {
+    width: inherit;
+    height: inherit;
+    padding: max(2vmin, 10px);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--color);
+}
+.documentStoreContainer .docsBody {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 1vh;
+    margin-top: 1vh;
+    padding-bottom: 50px;
+    > a {
+        text-decoration: none;
+    }
+}
+.documentStoreContainer .docsBody .fileCard:first-child {
+    margin-top: unset;
+}
+.documentStoreContainer .docsBody .fileCard {
+    width: inherit;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color);
+    background: #fff;
+    text-decoration: none;
+    font-size: max(2vmin, 1rem);
+    border-radius: 10px;
+} 
+.documentStoreContainer .fileCard:hover {
+    background: var(--color);
+    color: #fff;
+}
+.documentStoreContainer .docsHeader {
+    text-align: start;
+    border-bottom: 2px solid #e7e7e7;
+    top: 0;
+    color: #fff;
+    padding: 1vmin;
+}
+.no-docts {
+    display: grid;
+    place-items: center;
+    color: #fff;
+    height: 100%;
+}

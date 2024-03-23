@@ -1,0 +1,81 @@
+.wishlistContainer,
+.cardToggle {
+  grid-row: span 2;
+  border-radius: 10px;
+  padding: 2vmin;
+  color: #fff;
+  height: 100%;
+  overflow: hidden;
+  background: var(--color);
+}
+.wishlistContent {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.wishlistContent .wishlistHeader {
+  text-align: end;
+  padding: 1vmin;
+  border-bottom: 2px solid #fff;
+}
+.wishlistContent .cardContainer {
+  overflow-y: auto;
+  margin-top: 2vmin;
+  height: 100%;
+}
+
+.wishlistContent .cardContainer .card {
+  padding: 1vmin;
+  background: #fff;
+  border-radius: 10px;
+  text-wrap: wrap;
+  cursor: pointer;
+  margin-top: 2vh;
+}
+.wishlistContent .cardContainer .card:hover {
+  color: #fff !important;
+  background: var(--color) !important;
+}
+.wishlistContent .cardContainer .card:first-child {
+  margin-top: unset;
+}
+.cardToggle .close {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+.cardToggle {
+  > h3 {
+    color: pink;
+  }
+}
+.cardToggle .close .icon {
+  cursor: pointer;
+  width: 3vmin;
+  height: 3vmin;
+}
+.cardToggle .cardToggleHeader {
+  display: grid;
+  grid-template-columns: 1.7fr 0.3fr;
+  text-wrap: wrap;
+}
+.noWishlist {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  text-wrap: wrap;
+}
+.noWishlist h3 {
+  text-align: center;
+}
+.noWishlist a {
+  width: 80%;
+  text-align: center;
+  background: #fff;
+  color: var(--color);
+  padding: .5vmin;
+  border-radius: 10px;
+  cursor: pointer;
+
+}

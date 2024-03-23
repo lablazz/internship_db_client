@@ -1,0 +1,27 @@
+#homepageTEA .welcomeCard {
+    background: var(--color);
+    margin-bottom: 1.5vmin;
+}
+#homepageTEA .controlContainer {
+    margin-bottom: 1.5vmin;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1vmin;
+}
+#homepageTEA .chartsContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.5vmin;
+}
+#homepageTEA .chartsContainer .barchart,
+#homepageTEA .chartsContainer .piechart {
+    padding: 1vmin;
+    border: 5px solid var(--color);
+    border-radius: 10px;
+    width: 100%;
+}
+.charts {
+    /* width: 100% !important; */
+    max-height: 350px !important;
+}

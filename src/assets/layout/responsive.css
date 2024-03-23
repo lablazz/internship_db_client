@@ -1,0 +1,168 @@
+.loginFrom {
+  right: 5vw;
+  top: 50%;
+  transform: translate(-5vw, -50%);
+}
+
+/* for mobile web app */
+
+@media (max-width: 500px) {
+  .grid {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: unset !important;
+    grid-template-rows: unset !important;
+  }
+  .gridContainer {
+    height: fit-content !important;
+  }
+  .sidebarContainer {
+    height: var(--sidebarWidth) !important;
+    width: 100% !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    top: unset !important;
+    z-index: 200;
+  }
+  .sidebarContainer ul {
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 5%;
+  }
+  .sidebarContainer ul li {
+    position: unset !important;
+    margin-top: unset !important;
+  }
+  .contextContainer {
+    margin-left: unset !important;
+    margin-top: var(--headerHeight);
+    margin-bottom: var(--sidebarWidth);
+    width: 100% !important;
+    height: fit-content !important;
+  }
+  .sidebarContainer ul li.setting,
+  .sidebarContainer ul li.logout {
+    position: unset;
+  }
+  .sidebarContainer ul li .icon {
+    width: 5vmin !important;
+    height: 5vmin !important;
+  }
+  .welcomeCard {
+    text-align: center;
+  }
+  .headerContainer .logoContainer {
+    width: 50%;
+  }
+  .arrowContainer img {
+    display: none;
+  }
+  .loginFrom {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .wishlistContent .wishlistHeader {
+    text-align: start !important;
+  }
+  .documentStoreContainer {
+    margin-bottom: var(--sidebarWidth);
+  }
+  .whiteSpaceFooter {
+    height: 50px;
+  }
+  /* .wishListContainer {
+    max-height: 450px;
+  } */
+  .wishListContainer .wishlistContent .cardContainer,
+  .documentStoreContainer .docsBody {
+    overflow-y: auto;
+    max-height: 350px;
+    padding-bottom: unset !important;
+  }
+  .filterContainer .searchBar {
+    grid-template-columns: 1.6fr 0.2fr 0.2fr !important;
+  }
+  .queryResult {
+    margin-bottom: var(--sidebarWidth) !important;
+  }
+  .scrollButton {
+    bottom: calc(4vmin + var(--sidebarWidth)) !important;
+    width: 1.75rem !important;
+    height: 1.75rem !important;
+  }
+  .filterContainer .searchBar .confirmBox .icon,
+  .filterContainer .searchBar .toggleBox .icon {
+    width: 1.75rem !important;
+    height: 1.75rem !important;
+  }
+  .payloadCard {
+    margin-bottom: 2vh !important;
+  }
+  .countDownTimer .no-event{
+    height: 100px;
+  }
+  .wishListContainer {
+    min-height: 100px;
+  }
+  .wishListContainer .wishlistContainer {
+    min-height: inherit;
+    width: 100%;
+    display: grid;
+    place-items: center;
+  }
+  .wishListContainer .wishlistContainer .wishlistContent,
+  .wishListContainer .wishlistContainer .cardToggle {
+    width: 100%;
+  }
+  #homepageTEA {
+    margin-bottom: var(--sidebarWidth);
+  }
+}
+
+/* for tablet web app */
+
+@media screen and (min-width: 501px) and (max-width: 850px) {
+  .gridContainer {
+    height: unset !important;
+  }
+  .grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: 1.2fr 1.8fr !important;
+  }
+  .documentStore {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
+  }
+  .countDownTimer {
+    grid-row: span 1 !important;
+    grid-column: span 2 !important;
+  }
+  .wishListContainer {
+    grid-row: span 1 !important;
+    grid-column: span 1 !important;
+    max-height: 450px;
+  }
+  .documentStoreContainer {
+    max-height: 450px;
+  }
+  .documentStoreContainer .docsHeader {
+    text-align: end !important;
+  }
+  .wishlistContent .wishlistHeader {
+    text-align: start !important  ;
+  }
+  .filterContainer .searchBar {
+    grid-template-columns: 1.6fr 0.2fr 0.2fr !important;
+  }
+  .filterContainer .searchBar .icon {
+    width: 3.5vmin;
+    height: 3.5vmin;
+  }
+  #searchResult .scrollButton {
+    width: 5vmin !important;
+    height: 5vmin !important;
+  }
+}

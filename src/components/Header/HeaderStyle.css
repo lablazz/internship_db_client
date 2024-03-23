@@ -1,0 +1,32 @@
+.arrowContainer img {
+  height: var(--headerHeight);
+  margin-right: 3vw;
+}
+.headerContainer .logoContainer {
+  width: max(10vw, 250px);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 3%;
+}
+.headerContainer .logoContainer .logoImgContainer {
+  background: #f7f7f7;
+  width: max(5vmin, 50px);
+  height: max(5vmin, 50px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+  > img {
+    height: var(--headerHeight);
+  }
+}
+
+.logoContainer {
+  cursor: context-menu;
+}
+.headerContainer {
+  box-shadow: 0 -5px 20px #000;
+}

@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: 'Kanit', sans-serif !important;
+}
+
+.Header {
+  position: absolute;
+  right: 3vw;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20vw;
+}
+/* scroll bar */
+::-webkit-scrollbar {
+  width: 0; /* width of the scrollbar */
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px; /* roundness of the scrollbar */
+}
+/* .wishlistContent .cardContainer:hover::-webkit-scrollbar {
+  width: 4px;
+  border-radius: 10px;
+  margin-left: 5px;
+}
+.wishlistContent .cardContainer:hover::-webkit-scrollbar-thumb {
+  background: #fff;
+} */

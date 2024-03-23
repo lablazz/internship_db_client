@@ -1,0 +1,182 @@
+.add-std, .add-company {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 2vmin;
+    
+    > .header {
+        padding: 1vmin;
+        background: var(--color);
+        border-radius: 10px;
+        cursor: pointer;
+        color: #fff;
+    }
+    > .header:hover {
+        filter: brightness(0.9);
+    }
+    > .body {
+        display: var(--view);
+        margin: 0 1vmin;
+        padding: 1vmin;
+        background: #ae9cd4;
+        border-radius: 0 0 10px 10px;
+    }
+}
+
+.add-std .body {
+    > form {
+        > .wrap {
+            display: grid;
+            grid-template-columns: 170px 1fr;
+            place-items: center start;
+            gap: 1vmin;
+
+            > input[type = 'file'] {
+                width: 100%;
+            }
+            > input[type = 'file']::file-selector-button {
+                border: none;
+                padding: .2em .4em;
+                border-radius: 10px;
+                background-color: #fff;
+            }
+            > button {
+                grid-column: 1 / 3;
+                width: 100%;
+                padding: .75vmin;
+                border-radius: 10px;
+                outline: none;
+                border: none;
+                background: var(--color);
+                color: #fff;
+            }
+            > button:hover {
+                filter: brightness(0.9);
+            }
+        }
+    }
+}
+.add-company .body {
+    > form {
+        > .wrap {
+            display: grid;
+            grid-template-columns: 170px 1fr 70px;
+            place-items: center start;
+            gap: 1vmin 1.5vmin;
+
+            > input[type = 'file'] {
+                width: 100%;
+            }
+            > input[type = 'file']::file-selector-button {
+                border: none;
+                padding: .2em .4em;
+                border-radius: 10px;
+                background-color: #fff;
+            }
+            > button {
+                grid-column: 3 / 4;
+                width: 100%;
+                padding: .75vmin;
+                border-radius: 10px;
+                outline: none;
+                border: none;
+                background: var(--color);
+                color: #fff;
+                margin: .25vmin;
+            }
+            > button:hover {
+                filter: brightness(0.9);
+            }
+        }
+    }
+}
+
+.manage-student, .manage-company, .manage-contact {
+    width: 100%;
+    max-height: 500px;
+    overflow-y: auto;
+    background: var(--color);
+    border-radius: 10px;
+    border: 1px solid var(--color);
+    margin-bottom: 1.5vmin;
+    > h3 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+    }
+    > form {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 50px;
+        padding: 1vmin;
+        gap: 1vmin;
+        position: sticky;
+        top: 0;
+        background: inherit;
+        > input[type = 'text'] {
+            border: none;
+            outline: none;
+            border-radius: 10px;
+            padding: 1vmin;
+            /* box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.5); */
+        }
+        > button {
+            outline: none;
+            border: none;
+            padding: 1vmin;
+            border-radius: 10px;
+            > .icon {
+                width: 2vmin;
+                height: 2vmin;
+                color: var(--color);
+            }
+        }
+        /* > button:hover {
+            box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.5);
+        } */
+    }
+    > .result-container {
+        padding: 1vmin;
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+        gap: 1vmin;
+        > .each-result {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.5);
+            /* padding: 1vmin; */
+            > p:nth-child(odd), .btn-del {
+                background: #ae9cd4;
+                display: flex;
+                padding: 0.2vmin;
+                padding-left: 1.5vmin;
+            }
+            > p:nth-child(even) {
+                padding-left: 1vmin;
+            }
+            > .btn-del {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                background: #303030;
+                padding-left: unset;
+                > .icon {
+                    color: #fff;
+                }
+            }
+            > .btn-del:hover {
+                > .icon {
+                    color: rgb(233, 55, 55);
+                }
+            }
+        }
+    }
+}

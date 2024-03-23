@@ -1,0 +1,80 @@
+:root {
+  --headerHeight: max(6vmin, 50px);
+  --sidebarWidth: max(5%, 50px);
+}
+
+.headerContainer {
+  width: 100vw;
+  height: var(--headerHeight);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+}
+.sidebarContainer {
+  height: calc(100vh - var(--headerHeight));
+  width: var(--sidebarWidth);
+  position: fixed;
+  left: 0;
+  top: var(--headerHeight);
+  bottom: 0;
+  overflow: hidden;
+  z-index: 100;
+}
+
+.sidebarContainer ul {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #303030;
+  gap: 4vmin;
+  > li {
+    list-style-type: none;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.sidebarContainer ul li:first-child {
+  margin-top: 2vh;
+}
+.sidebarContainer ul li.setting {
+  position: absolute;
+  bottom: 9vh;
+}
+.sidebarContainer ul li.logout {
+  position: absolute;
+  bottom: 2vh;
+  color: #F8F1E5;
+}
+.sidebarContainer ul li.logout .logoutIcon:hover {
+  color: red;
+}
+.sidebarContainer .icon {
+  /* color: #f7f7f7; */
+  width: 4vmin ;
+  height: 4vmin ;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+}
+
+.contextContainer {
+  --paddingX: 2vw;
+  --paddingY: 2vh;
+  --paddingSize: 2vmin;
+  width: calc(100vw - var(--sidebarWidth) var(--paddingX));
+  padding: calc(var(--paddingY) / 2) calc(var(--paddingX) / 2);
+  height: fit-content;
+  margin-left: calc(max(5%, 50px));
+  margin-top: var(--headerHeight);
+  position: relative;
+  z-index: 0;
+}
+.contextContainer .pageContainer {
+  height: 100%;
+  /* margin: 2vmin; */
+}
