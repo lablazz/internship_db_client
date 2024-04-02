@@ -27,6 +27,8 @@
     overflow: auto;
     padding: 1vmin;
     color: #fff;
+    display: flex;
+    flex-direction: column;
     gap: 1vmin;
     > .noEvent {
         color: #303030;

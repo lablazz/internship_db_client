@@ -5,14 +5,14 @@ import "../../assets/layout/dashboardStyle.css";
 import "../../assets/layout/responsive.css";
 import "./UserInfoStyle.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faL, faPen } from "@fortawesome/free-solid-svg-icons";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
 import axios from "axios";
 
 function UserInfo() {
   const userdata = JSON.parse(sessionStorage.getItem("userData"));
   const [reset, useReset] = useState(false);
-  const [active, setActive] = useState(false)
+  const [active, setActive] = useState(false);
 
   const handleEdit = (changeCol) => {
     function condition(value) {
@@ -49,7 +49,7 @@ function UserInfo() {
         });
         if (con_.value && condition(value)) {
           await axios
-            .post("http://localhost:24252/updateUser", {
+            .post("https://internship-db-server-kxqk.onrender.com/updateUser", {
               where: changeCol,
               value,
               username: userdata.username,
@@ -100,7 +100,7 @@ function UserInfo() {
     let newPassword = data.get("newPassword");
     let conPassword = data.get('conPassword');
     if (conPassword == newPassword) {
-      await axios.post('http://localhost:24252/resetPassword', {
+      await axios.post('https://internship-db-server-kxqk.onrender.com/resetPassword', {
       oldPassword, newPassword, username: userdata.username
       }).then((res) => {
         const {status, msg} = res.data
@@ -111,6 +111,9 @@ function UserInfo() {
           timer: 4000,
           icon: status == 'success' ? 'success' : 'error'
         })
+        document.querySelector('#oldPassword').value = '';
+        document.querySelector('#newPassword').value = '';
+        document.querySelector('#conPassword').value = '';
       })
     }
   };
@@ -148,7 +151,7 @@ function UserInfo() {
             </div>
           </div>
           <div className="txtwrap">
-            <h3>Minor</h3>
+            {userdata?.role === 'std' ? (<h3>Minor</h3>) : (<h3>Room</h3>)}
             <h4 id="minor">{userdata.minor}</h4>
             <div className="edit">
               <FontAwesomeIcon
@@ -161,7 +164,7 @@ function UserInfo() {
             </div>
           </div>
           <div className="txtwrap">
-            <h3>Tel</h3>
+            <h3>Phone</h3>
             <h4 id="tel">{userdata.tel}</h4>
             <div className="edit">
               <FontAwesomeIcon
@@ -199,13 +202,13 @@ function UserInfo() {
           >
             <div className="inpBox">
               <h4>old password : </h4>
-              <input type="password" name="oldPassword" id="oldPassword" />
-              <h4>Confirm new password : </h4>
-              <input type="password" name="newPassword" id="newPassword" />
+              <input type="password" name="oldPassword" id="oldPassword" required/>
               <h4>New password : </h4>
-              <input type="password" name="conPassword" id="conPassword" />
+              <input type="password" name="newPassword" id="newPassword" required/>
+              <h4>Confirm new password : </h4>
+              <input type="password" name="conPassword" id="conPassword" required/>
             </div>
-            <button type="submit" id={active ? 'active' : 'unactive'}>change password</button>
+            <button type="submit" disabled={!active} id={active ? "active" : "unactive"}>change password</button>
           </form>
         ) : (
           <div></div>

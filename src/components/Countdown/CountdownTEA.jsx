@@ -15,7 +15,7 @@ function CountdownTEA() {
   useEffect(() => {
     const fetchEvent = async () => {
       await axios
-        .post("http://localhost:24252/manageTime", {
+        .post("https://internship-db-server-kxqk.onrender.com/manageTime", {
           action: "fetch",
         })
         .then((res) => {
@@ -37,12 +37,12 @@ function CountdownTEA() {
     const data = new FormData(event.currentTarget);
     let date = data.get('date')
     let time = data.get('time')
-    let name = data.get('name')
+    let name = data.get('eventName')
     if (name === '') {
       return;
     }
     console.log(date, time)
-    axios.post("http://localhost:24252/manageTime", {
+    axios.post("https://internship-db-server-kxqk.onrender.com/manageTime", {
         action: 'add', date, time, name
     }).then((res)=>{
         const {status, msg} = res.data
@@ -59,7 +59,7 @@ function CountdownTEA() {
 
   const handleOnDel = async (id) => {
     
-    await axios.post("http://localhost:24252/manageTime", {
+    await axios.post("https://internship-db-server-kxqk.onrender.com/manageTime", {
         action: 'del', id
     }).then((res)=>{
         const {status, msg} = res.data
@@ -99,13 +99,13 @@ function CountdownTEA() {
       </div>
       <div className="eventContent">
         {addMode ? (
-          <form className="addBox" method="post" onSubmit={handleOnAdd} autoComplete="off">
+          <form className="addBox" method="post" onSubmit={handleOnAdd} autoComplete="off" autoSave="off">
             <h4>Event date : </h4>
-            <input type='date' name="date" id="date" />
+            <input type='date' name="date" id="date" required/>
             <h4>Event time : </h4>
-            <input type="time" name="time" id="time" />
+            <input type="time" name="time" id="time" required/>
             <h4>Event name : </h4>
-            <input type='text' name="name" id="name" aria-autocomplete="off" />
+            <input type='text' name="name" id="eventName" required aria-autocomplete="off" autocomplete="off"/>
             <button type="submit">save</button>
           </form>
         ) : (

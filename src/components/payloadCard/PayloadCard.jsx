@@ -27,9 +27,12 @@ function PayloadCard({ payload }) {
 
   useEffect(() => {
     const fetchCompanyDetails = async () => {
-      const details = await axios.post("http://localhost:24252/fetchCoDetails", {
-        co_id: payload.co_id,
-      });
+      const details = await axios.post(
+        "https://internship-db-server-kxqk.onrender.com/fetchCoDetails",
+        {
+          co_id: payload.co_id,
+        }
+      );
       if (details.data.status === "founded") {
         setCoDetail(details.data.data);
         setContacts(details.data.contact);
@@ -53,7 +56,7 @@ function PayloadCard({ payload }) {
 
     if (will.isConfirmed) {
       const { data } = await axios.post(
-        "http://localhost:24252/manageWishList",
+        "https://internship-db-server-kxqk.onrender.com/manageWishList",
         {
           username: userData.username,
           action,
@@ -102,6 +105,7 @@ function PayloadCard({ payload }) {
           let tmp = value;
           let address = document.querySelector("#address" + payload.co_id);
           let province = document.querySelector("#province" + payload.co_id);
+          let cotype = document.querySelector("#type" + payload.co_id);
           const con_ = await Swal.fire({
             title: `you want to change on ${at}`,
             text: `to ${value}`,
@@ -110,11 +114,16 @@ function PayloadCard({ payload }) {
           });
           if (con_.value) {
             axios
-              .post("http://localhost:24252/editCo", {
+              .post("https://internship-db-server-kxqk.onrender.com/editCo", {
                 action,
                 co_id: data.co_id,
                 update: value,
-                col: at == "Address" ? "co_address" : "co_prv",
+                col:
+                  at == "Address"
+                    ? "co_address"
+                    : at == "Province"
+                    ? "co_prv"
+                    : "co_type",
               })
               .then((res) => {
                 Swal.fire({
@@ -126,7 +135,9 @@ function PayloadCard({ payload }) {
                 }).then(() => {
                   at == "Address"
                     ? (address.innerHTML = tmp)
-                    : (province.innerHTML = tmp);
+                    : at == "Province"
+                    ? (province.innerHTML = tmp)
+                    : (cotype.innerHTML = tmp);
                 });
               });
           }
@@ -140,7 +151,7 @@ function PayloadCard({ payload }) {
       }).then((result) => {
         if (result.isConfirmed) {
           axios
-            .post("http://localhost:24252/editCo", {
+            .post("https://internship-db-server-kxqk.onrender.com/editCo", {
               action,
               std_id: data.std_id,
               co_id: data.co_id,
@@ -152,8 +163,7 @@ function PayloadCard({ payload }) {
                 text: "please reload to update comments",
                 showConfirmButton: false,
                 timer: 4000,
-                preConfirm: ()=>{
-                }
+                preConfirm: () => {},
               });
             });
         }
@@ -204,44 +214,58 @@ function PayloadCard({ payload }) {
           )}
         </div>
         <div className="txtwraper">
-          <h3>
-            Address :{" "}
+          <h4>
+            ที่อยู่ :{" "}
             {editMode ? (
-              <div className="box">
-                <button
-                  className="editBtn"
-                  onClick={() => {
-                    handleEdit("edit", payload, "Address");
-                  }}
-                >
-                  <FontAwesomeIcon icon={faPen} className="icon" />
-                </button>
-              </div>
+              <button
+                className="editBtn"
+                onClick={() => {
+                  handleEdit("edit", payload, "Address");
+                }}
+              >
+                Edit
+              </button>
             ) : (
               ""
             )}
-          </h3>
+          </h4>
           <p id={"address" + payload.co_id}>{payload.co_address}</p>
         </div>
         <div className="txtwraper">
-          <h3>
-            Province :{" "}
+          <h4>
+            จังหวัด :{" "}
             {editMode ? (
-              <div className="box">
-                <button
-                  className="editBtn"
-                  onClick={() => {
-                    handleEdit("edit", payload, "Province");
-                  }}
-                >
-                  <FontAwesomeIcon icon={faPen} className="icon" />
-                </button>
-              </div>
+              <button
+                className="editBtn"
+                onClick={() => {
+                  handleEdit("edit", payload, "Province");
+                }}
+              >
+                Edit
+              </button>
             ) : (
               ""
             )}
-          </h3>
+          </h4>
           <p id={"province" + payload.co_id}>{payload.co_prv}</p>
+        </div>
+        <div className="txtwraper">
+          <h4>
+            ประเภทของหน่วยงาน :{" "}
+            {editMode ? (
+              <button
+                className="editBtn"
+                onClick={() => {
+                  handleEdit("edit", payload, "Type");
+                }}
+              >
+                Edit
+              </button>
+            ) : (
+              ""
+            )}
+          </h4>
+          <p id={"type" + payload.co_id}>{payload.co_type}</p>
         </div>
         <div className="contact">
           {contacts &&
@@ -250,10 +274,10 @@ function PayloadCard({ payload }) {
                 return contact.contact_name ? (
                   <div className="each-contact">
                     <h4>{index + 1}</h4>
-                    <p>Name : {contact.contact_name}</p>
-                    <p>Department : {contact.department}</p>
-                    <p>Phone : {contact.contact_tel}</p>
-                    <p>Email : {contact.email}</p>
+                    <p>ชื่อ : {contact.contact_name}</p>
+                    <p>ตำแหน่ง : {contact.department}</p>
+                    <p>หมายเลขโทรศัพท์ : {contact.contact_tel}</p>
+                    <p>อีเมล : {contact.email}</p>
                   </div>
                 ) : (
                   <></>
@@ -264,18 +288,18 @@ function PayloadCard({ payload }) {
             ))}
         </div>
         <div className="txtwraper">
-          <h3>Students who had internship or co-op program :</h3>
+          <h4>นักศึกษาที่เคยเข้ารับการฝึกงานหรือสหกิจศึกษา :</h4>
           <div className="stdContainer">
             {coDetail ? (
               coDetail.length === 0 ? (
-                <p>No internship or co-op yet</p>
+                <p>ยังไม่เคยมีนักศึกษาเข้ารับการฝึกงานหรือสหกิจศึกษา</p>
               ) : (
                 <div className="commentContainer">
                   {coDetail.map((detail, index) => (
                     <div className="eachStdDetails" key={index}>
                       <div className="wrap">
-                        <p> Student ID : {detail.std_id} </p>
-                        <p>Type : {detail.intern_type}</p>
+                        <p>รหัสนักศึกษา : {detail.std_id} </p>
+                        <p>แผนการศึกษา : {detail.intern_type}</p>
                         {(userData.role == "tea" || userData.role == "adm") &&
                         editMode &&
                         detail.comment ? (
@@ -291,7 +315,9 @@ function PayloadCard({ payload }) {
                           ""
                         )}
                         {detail.comment ? (
-                          <p id={'comment' + detail.co_id + detail.std_id}>Comment : {detail.comment}</p>
+                          <p id={"comment" + detail.co_id + detail.std_id}>
+                            ความคิดเห็น : {detail.comment}
+                          </p>
                         ) : (
                           ""
                         )}
@@ -301,7 +327,7 @@ function PayloadCard({ payload }) {
                 </div>
               )
             ) : (
-              <p>Loading...</p>
+              <p>กำลังโหลด</p>
             )}
           </div>
         </div>

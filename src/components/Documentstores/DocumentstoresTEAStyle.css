@@ -23,10 +23,13 @@
 }
 .docsContainer .docs-container {
   height: fit-content;
-  max-height: 350px;
+  max-height: 270px;
   margin: 1vmin;
   color: #303030;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1vmin;
   > .eachdocs {
     display: flex;
     width: 100%;
@@ -36,11 +39,10 @@
     padding: 1vmin;
     border-radius: 10px;
     padding-right: 1.25vmin;
-    gap: 1vmin;
     > a {
-        text-decoration: none;
-        color: #fff;
-        width: 100%;
+      text-decoration: none;
+      color: #fff;
+      width: 100%;
     }
     > .icon {
       color: #fff;

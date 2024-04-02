@@ -5,7 +5,7 @@ import axios from 'axios'
 
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import background from "/bg002.jpg";
+import background from "/BgImg2.png";
 import logo from "/stLogo.png";
 import Swal from 'sweetalert2'
 import '../assets/layout/responsive.css'
@@ -15,7 +15,7 @@ import '../assets/layout/responsive.css'
 
 async function postJSON(data) {
   try {
-    const response = await axios.post('http://localhost:24252/login', data, {
+    const response = await axios.post('https://internship-db-server-kxqk.onrender.com/login', data, {
       headers: {
         'Content-Type': 'application/json'
       }})

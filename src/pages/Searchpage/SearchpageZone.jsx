@@ -25,52 +25,62 @@ function SearchpageZone() {
 
   const { userData, color, subcolor } = useContext(userdata);
 
-  const label = { inputProps: { "aria-label": "Checkbox demo" } };
+  const label = { };
 
-  
-  useEffect(() => {
-    const handleOnSubmit = (event) => {
-      event.preventDefault();
-      const data = new FormData(event.currentTarget);
-      const query = {
-        querytxt: data.get("query"),
-        prv: data.get("prv"),
-        view: data.get("view") === "on",
-        intern: !!data.get("492"),
-        coop: !!data.get("499"),
-        priv: !!data.get("priv"),
-        grov: !!data.get("grov"),
-      };
-      const fetchResult = async () => {
-        const response = await axios.post(
-          "http://localhost:24252/fetchSearchResult",
-          query
-        );
-        if (response.data.status === "no match") {
-          setResult("no match");
-        } else {
-          setResult(response.data.data);
-        }
-      };
-      
-      fetchResult();
+  const handleOnSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const query = {
+      querytxt: data.get("query"),
+      prv: data.get("prv"),
+      view: switchState,
+      intern: !!data.get("492"),
+      coop: !!data.get("499"),
+      priv: !!data.get("priv"),
+      grov: !!data.get("grov"),
     };
-    const form = document.querySelector("#formControl");
-    if (form) {
-      form.addEventListener("submit", handleOnSubmit);
-    }
-
-    // Clean up event listener on component unmount
-    return () => {
-      if (form) {
-        form.removeEventListener("submit", handleOnSubmit);
+    const fetchResult = async () => {
+      const response = await axios.post(
+        "https://internship-db-server-kxqk.onrender.com/fetchSearchResult",
+        query
+      );
+      if (response.data.status === "no match") {
+        setResult("no match");
+      } else {
+        setResult(response.data.data);
       }
     };
-  }, []);
+    console.log(switchState)
+    fetchResult();
+  };
+
+  useEffect(()=>{
+    const fetchResult = async () => {
+      let query = {
+        querytxt: '',
+        prv: '',
+        view: switchState,
+        intern: false,
+        coop: false,
+        priv: false,
+        grov: false,
+      }
+      const response = await axios.post(
+        "https://internship-db-server-kxqk.onrender.com/fetchSearchResult",
+        query
+      );
+      if (response.data.status === "no match") {
+        setResult("no match");
+      } else {
+        setResult(response.data.data);
+      }
+    };
+    fetchResult();
+  }, [])
 
   useEffect(() => {
     const prvFetch = async () => {
-      const response = await axios.post("http://localhost:24252/fetchprv");
+      const response = await axios.post("https://internship-db-server-kxqk.onrender.com/fetchprv");
       setPrvMenus(response.data.data);
     };
 
@@ -99,7 +109,7 @@ function SearchpageZone() {
 
   return (
     <div style={{ "--color": color }} id="searchResult">
-      <form className="filterContainer" method="post" id="formControl">
+      <form className="filterContainer" method="post" id="formControl" onSubmit={handleOnSubmit}>
         <div className="searchBar">
           <div className="inputBar">
             <input
@@ -107,7 +117,7 @@ function SearchpageZone() {
               name="query"
               id=""
               autoComplete="off"
-              placeholder="fill company name here"
+              placeholder="กรุณากรอกชื่อหน่วยงาน"
             />
           </div>
           <button type="submit" className="confirmBox">
@@ -129,7 +139,7 @@ function SearchpageZone() {
           <div className="prvBox">
             <select name="prv" id="prv">
               <option value="" defaultValue>
-                all
+                ทุกจังหวัด
               </option>
               {prvMenus ? (
                 prvMenus.map((menu, index) => {
@@ -140,54 +150,70 @@ function SearchpageZone() {
                   );
                 })
               ) : (
-                <option value="">Loaing</option>
+                <option value="">กำลังโหลด</option>
               )}
             </select>
           </div>
+          <div className="coTypeBox" style={{ "--switch": color}}>
+              <div className="wrap">
+                <h4>ประเภทของหน่วยงาน :</h4>
+              </div>
+              <div className="wrap">
+                <Checkbox
+                  {...label}
+                  name="priv"
+                  color="success"
+                />
+                <p>บริษัทเอกชน</p>
+              </div>
+
+              <div className="wrap">
+                <Checkbox
+                  {...label}
+                  name="grov"
+                  color="success"
+                />
+                <p>ราชการ</p>
+              </div>
+            </div>
+          <div className="switchBox">
+            <Switch
+              {...label}
+              name="view"
+              color="success"
+              defaultChecked
+              onChange={() => {
+                setSwitchState(!switchState);
+              }}
+            />
+            <p style={{ "--switch": switchState ? color : "#9c9c9c" }}>
+              มีนักศึกษาเคยเข้ารับการฝึกงานหรือสหกิจที่หน่วยงานแล้วเท่านั้น
+            </p>
+          </div>
           <div className="checkBox">
-            <div className="internTypeBox">
+            <div className="internTypeBox" style={{ "--switch": switchState ? color : "#9c9c9c" }}>
               <div className="wrap">
-                <h4>Program :</h4>
+                <h4>แผนการศึกษา :</h4>
               </div>
               <div className="wrap">
-                <Checkbox {...label} name="492" color="success" />
-                <p>internship (208492)</p>
-              </div>
-
-              <div className="wrap">
-                <Checkbox {...label} name="499" color="success" />
-                <p>co-op program (208497)</p>
-              </div>
-            </div>
-
-            <div className="coTypeBox">
-              <div className="wrap">
-                <h4>Co-Type :</h4>
-              </div>
-              <div className="wrap">
-                <Checkbox {...label} name="priv" color="success" />
-                <p>private sector</p>
+                <Checkbox
+                  {...label}
+                  name="492"
+                  color="success"
+                  disabled={!switchState}
+                />
+                <p>การฝึกงานทางสถิติ (208492)</p>
               </div>
 
               <div className="wrap">
-                <Checkbox {...label} name="grov" color="success" />
-                <p>government sector</p>
+                <Checkbox
+                  {...label}
+                  name="499"
+                  color="success"
+                  disabled={!switchState}
+                />
+                <p>สหกิจศึกษาทางสถิติ (208497)</p>
               </div>
-            </div>
-
-            <div className="switchBox">
-              <Switch
-                {...label}
-                name="view"
-                color="success"
-                defaultChecked
-                onChange={() => {
-                  setSwitchState(!switchState);
-                }}
-              />
-              <p style={{ "--switch": switchState ? color : "#9c9c9c" }}>
-                Had been internship or co-op only
-              </p>
             </div>
           </div>
         </div>
@@ -196,16 +222,11 @@ function SearchpageZone() {
       <div className="resultContainer">
         {queryResults ? (
           queryResults == "no match" ? (
-            <h3>no company match</h3>
+            <h3>ไม่พบหน่วยงาน</h3>
           ) : (
             <div className="queryResult">
               {queryResults.map((result) => {
-                return (
-                  <PayloadCard
-                    payload={result}
-                    key={result.co_id}
-                  />
-                );
+                return <PayloadCard payload={result} key={result.co_id} />;
               })}
             </div>
           )

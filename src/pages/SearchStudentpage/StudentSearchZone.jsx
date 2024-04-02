@@ -40,7 +40,7 @@ function StudentSearchZone() {
     };
     const fetchResult = async () => {
       await axios
-        .post("http://localhost:24252/studentquery", query)
+        .post("https://internship-db-server-kxqk.onrender.com/studentquery", query)
         .then((res) => {
           const { status, data, msg } = res.data;
           if (status == "found") {

@@ -20,7 +20,7 @@ function Wishlish() {
 
   useEffect(() => {
     const fetchWishlist = async () => {
-      const response = await axios.post("http://localhost:24252/getWishlist", {
+      const response = await axios.post("https://internship-db-server-kxqk.onrender.com/getWishlist", {
         username: userData.username,
       });
       if (response.data.status == "founded") {
@@ -69,7 +69,7 @@ function Wishlish() {
           <br />
           <h3>Type</h3>
           <p>{coToggled.co_type}</p>
-          <br />
+          {/* <br />
           <h3>Conatct name</h3>
           <p>{coToggled.contact_name}</p>
           <br />
@@ -80,7 +80,7 @@ function Wishlish() {
           <p>{coToggled.tel}</p>
           <br />
           <h3>Email</h3>
-          <p>{coToggled.email}</p>
+          <p>{coToggled.email}</p> */}
         </div>
       ) : coData ? (
         coData == "404" ? (
