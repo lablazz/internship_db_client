@@ -11,7 +11,7 @@ function Piechart() {
   const [type, setType] = useState(null);
   useEffect(() => {
     const fetchPrv = async () => {
-      const response = await axios.post("https://internship-db-server-kxqk.onrender.com/fetchType");
+      const response = await axios.post("http://localhost:24252/fetchType");
       // console.log(response)
       const { status, data } = response.data;
       if (status == "founded") {

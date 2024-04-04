@@ -38,7 +38,7 @@ function AddStudent({ payload }) {
     if (confirmation.isConfirmed) {
       try {
         const response = await axios.post(
-          "https://internship-db-server-kxqk.onrender.com/uploadStudentCSV",
+          "http://localhost:24252/uploadStudentCSV",
           formData,
           {
             headers: { "Content-Type": "multipart/form-data" },

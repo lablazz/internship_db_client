@@ -9,13 +9,14 @@ import background from "/BgImg2.png";
 import logo from "/stLogo.png";
 import Swal from "sweetalert2";
 import "../assets/layout/responsive.css";
+import "../assets/layout/loginStyle.css";
 import { useNavigate } from "react-router-dom";
 
 // ------------------------------------------------------- page
 
 function LoginPage() {
   let navigate = useNavigate();
-  
+
   if (sessionStorage.getItem("user")) {
     sessionStorage.clear();
   }
@@ -29,20 +30,17 @@ function LoginPage() {
         text: "You have to fill username and password",
         icon: "warning",
         timer: 4000,
-        showConfirmButton: false
+        showConfirmButton: false,
       });
       return;
     }
-  
+
     const dataJson = {
       username: data.get("username"),
       password: data.get("password"),
     };
-  
-    const response = await axios.post(
-      "https://internship-db-server-kxqk.onrender.com/login",
-      dataJson
-    );
+
+    const response = await axios.post("http://localhost:24252/login", dataJson);
     const status = response.data.status;
     const msg = response.data.msg;
     console.log(response.data.data);
@@ -55,9 +53,9 @@ function LoginPage() {
         text: "you are login successfully",
         icon: "success",
         timer: 4000,
-        showConfirmButton: false
+        showConfirmButton: false,
       }).then(() => {
-        navigate('/dashboard');
+        navigate("/dashboard");
       });
     } else {
       console.log(status);
@@ -72,67 +70,51 @@ function LoginPage() {
   };
 
   return (
-    <div>
-      <div
-        style={{
-          backgroundImage: `url(${background})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          position: "relative",
-          height: "100vh",
-          width: "100vw",
-        }}
+    <div
+      style={{
+        backgroundImage: `url(${background})`
+      }}
+      className="login-bg"
+    >
+      <form
+        noValidate
+        autoComplete="off"
+        method="post"
+        onSubmit={handleSubmit}
+        className="loginFrom"
       >
-        <form
+        <img
+          src={logo}
+          alt="Logo"
           style={{
-            width: "max(250px, 20vw)",
-            display: "flex",
-            flexDirection: "column",
-            gap: "2vh",
-            position: "absolute",
-            background: "rgba(225, 225, 225, 0.8)",
-            padding: "5vh",
-            borderRadius: "10px",
+            width: "10vmin",
+            margin: "0 auto",
           }}
-          noValidate
-          autoComplete="off"
-          method="post"
-          onSubmit={handleSubmit}
-          className="loginFrom"
+        />
+        <TextField
+          id="outlined-basic"
+          label="Username"
+          variant="outlined"
+          sx={{
+            borderColor: "",
+          }}
+          name="username"
+        />
+        <TextField
+          id="outlined-basic"
+          label="Password"
+          variant="outlined"
+          type="password"
+          name="password"
+        />
+        <Button
+          type="submit"
+          variant="outlined"
+          sx={{ m: "0 auto", width: "100%" }}
         >
-          <img
-            src={logo}
-            alt="Logo"
-            style={{
-              width: "10vmin",
-              margin: "0 auto",
-            }}
-          />
-          <TextField
-            id="outlined-basic"
-            label="Username"
-            variant="outlined"
-            sx={{
-              borderColor: "",
-            }}
-            name="username"
-          />
-          <TextField
-            id="outlined-basic"
-            label="Password"
-            variant="outlined"
-            type="password"
-            name="password"
-          />
-          <Button
-            type="submit"
-            variant="outlined"
-            sx={{ m: "0 auto", width: "100%" }}
-          >
-            Sign In
-          </Button>
-        </form>
-      </div>
+          Sign In
+        </Button>
+      </form>
     </div>
   );
 }

@@ -15,7 +15,7 @@ function CountdownTEA() {
   useEffect(() => {
     const fetchEvent = async () => {
       await axios
-        .post("https://internship-db-server-kxqk.onrender.com/manageTime", {
+        .post("http://localhost:24252/manageTime", {
           action: "fetch",
         })
         .then((res) => {
@@ -42,7 +42,7 @@ function CountdownTEA() {
       return;
     }
     console.log(date, time)
-    axios.post("https://internship-db-server-kxqk.onrender.com/manageTime", {
+    axios.post("http://localhost:24252/manageTime", {
         action: 'add', date, time, name
     }).then((res)=>{
         const {status, msg} = res.data
@@ -59,7 +59,7 @@ function CountdownTEA() {
 
   const handleOnDel = async (id) => {
     
-    await axios.post("https://internship-db-server-kxqk.onrender.com/manageTime", {
+    await axios.post("http://localhost:24252/manageTime", {
         action: 'del', id
     }).then((res)=>{
         const {status, msg} = res.data

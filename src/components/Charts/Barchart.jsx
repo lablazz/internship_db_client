@@ -10,7 +10,7 @@ function Barchart() {
   const [prv, setPrv] = useState(null);
   useEffect(() => {
     const fetchPrv = async () => {
-      const response = await axios.post("https://internship-db-server-kxqk.onrender.com/fetchprv");
+      const response = await axios.post("http://localhost:24252/fetchprv");
       // console.log(response)
       const { status, data } = response.data;
       if (status == "founded") {
