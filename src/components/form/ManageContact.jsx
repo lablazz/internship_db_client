@@ -13,7 +13,7 @@ function ManageContact() {
   useEffect(() => {
     const fetchCompany = () => {
       axios
-        .post("http://localhost:24252/manageContact", {
+        .post("https://internship-db-server-kxqk.onrender.com/manageContact", {
           action: "fetch",
           userQuery: "",
         })
@@ -48,7 +48,7 @@ function ManageContact() {
     const formData = new FormData(event.target);
     const id = formData.get("company");
     axios
-      .post("http://localhost:24252/manageContact", {
+      .post("https://internship-db-server-kxqk.onrender.com/manageContact", {
         action: "fetch",
         userQuery: id,
       })
@@ -82,7 +82,7 @@ function ManageContact() {
       if (res.isConfirmed) {
         setResult("onLoad");
         axios
-          .post("http://localhost:24252/manageContact", {
+          .post("https://internship-db-server-kxqk.onrender.com/manageContact", {
             action: "del",
             data,
           })

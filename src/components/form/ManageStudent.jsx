@@ -13,7 +13,7 @@ function ManageStudent() {
   useEffect(() => {
     const fetchStudent = () => {
       axios
-        .post("http://localhost:24252/manageStudent", {
+        .post("https://internship-db-server-kxqk.onrender.com/manageStudent", {
           action: "fetch",
           userQuery: "",
         })
@@ -47,7 +47,7 @@ function ManageStudent() {
     const formData = new FormData(event.target);
     const id = formData.get("student");
     axios
-      .post("http://localhost:24252/manageStudent", {
+      .post("https://internship-db-server-kxqk.onrender.com/manageStudent", {
         action: "fetch",
         userQuery: id,
       })
@@ -80,7 +80,7 @@ function ManageStudent() {
       if (res.isConfirmed) {
         setResult("onLoad");
         axios
-          .post("http://localhost:24252/manageStudent", {
+          .post("https://internship-db-server-kxqk.onrender.com/manageStudent", {
             action: "del",
             data,
           })

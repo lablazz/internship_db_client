@@ -11,7 +11,7 @@ function DocumentstoresSTD() {
 
   useEffect(() => {
     const getFile = async () => {
-      const response = await axios.post("http://localhost:24252/getfiles");
+      const response = await axios.post("https://internship-db-server-kxqk.onrender.com/getfiles");
       // console.log(response.data.data);
       if (response.data.status == "success") {
         setFiles(response.data.data);

@@ -49,7 +49,7 @@ function UserInfo() {
         });
         if (con_.value && condition(value)) {
           await axios
-            .post("http://localhost:24252/updateUser", {
+            .post("https://internship-db-server-kxqk.onrender.com/updateUser", {
               where: changeCol,
               value,
               username: userdata.username,
@@ -100,7 +100,7 @@ function UserInfo() {
     let newPassword = data.get("newPassword");
     let conPassword = data.get('conPassword');
     if (conPassword == newPassword) {
-      await axios.post('http://localhost:24252/resetPassword', {
+      await axios.post('https://internship-db-server-kxqk.onrender.com/resetPassword', {
       oldPassword, newPassword, username: userdata.username
       }).then((res) => {
         const {status, msg} = res.data

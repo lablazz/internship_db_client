@@ -47,7 +47,7 @@ function AddCompany({ payload }) {
   const handleOnAddCompany = async (formData) => {
     try {
       const response = await axios.post(
-        "http://localhost:24252/uploadCompanyData",
+        "https://internship-db-server-kxqk.onrender.com/uploadCompanyData",
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
