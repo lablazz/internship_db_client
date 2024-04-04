@@ -5,14 +5,17 @@ import "../../assets/layout/responsive.css";
 import "./SidebarStyle.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser, faPowerOff } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 import { adminNavMenu, stdNavMenu, teaNavMenu } from "../navmenuDataset";
 
 function Sidebar({ userData }) {
+let navigate = useNavigate();
+
   const [menus, setMenus] = useState([]);
   function handleLogout() {
     sessionStorage.clear();
-    window.location.pathname = "/";
+    navigate("/");
   }
   useEffect(() => {
     const setUserDataByRole = (role) => {
@@ -27,7 +30,6 @@ function Sidebar({ userData }) {
     setUserDataByRole(userData.role);
   }, [userData]);
 
-  //   const navigate = useNavigate();
   return (
     <div className="sidebarContainer">
       <ul>
@@ -37,7 +39,7 @@ function Sidebar({ userData }) {
               <div className="iconContainer">
                 <a
                   onClick={() => {
-                    window.location.pathname = menu.pathname;
+                    navigate(menu.pathname);
                   }}
                   key={index}
                 >
@@ -60,8 +62,7 @@ function Sidebar({ userData }) {
           <div
             className="iconContainer"
             onClick={() => {
-              //   setPage("setting");
-              window.location.pathname = '/user-info'
+              navigate('/user-info')
             }}
           >
             <FontAwesomeIcon

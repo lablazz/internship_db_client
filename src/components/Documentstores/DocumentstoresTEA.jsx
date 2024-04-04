@@ -19,7 +19,7 @@ function DocumentstoresTEA() {
       // console.log(response)
       if (status == "success") {
         setDocs(data);
-        console.log(data)
+        // console.log(data)
       }
       if (status == "404") {
         setDocs("404");

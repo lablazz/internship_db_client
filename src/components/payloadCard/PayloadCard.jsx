@@ -272,7 +272,7 @@ function PayloadCard({ payload }) {
             (userData.role == "tea" || userData.role == "adm" ? (
               contacts.map((contact, index) => {
                 return contact.contact_name ? (
-                  <div className="each-contact">
+                  <div className="each-contact" key={contact.contact_name}>
                     <h4>{index + 1}</h4>
                     <p>ชื่อ : {contact.contact_name}</p>
                     <p>ตำแหน่ง : {contact.department}</p>
