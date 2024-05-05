@@ -2,10 +2,9 @@ import React, { useContext } from 'react'
 import './HomepageTEAStyle.css'
 import '../../assets/layout/responsive.css'
 import { userdata } from '../Dashbard'
-import BarChart from '../../components/Charts/Barchart'
-import Piechart from '../../components/Charts/Piechart'
 import DocumentstoresTEA from '../../components/Documentstores/DocumentstoresTEA'
 import CountdownTEA from '../../components/Countdown/CountdownTEA'
+import Charts from '../../components/Charts/Charts'
 
 function HomepageTEA() {
   const userData = JSON.parse(sessionStorage.getItem('userData'))
@@ -21,14 +20,7 @@ function HomepageTEA() {
         <CountdownTEA />
         <DocumentstoresTEA />
       </div>
-      <div className="chartsContainer" style={{'--color': color}}>
-        <div className="barchart">
-          <BarChart />
-        </div>
-        <div className="piechart">
-          <Piechart />
-        </div>
-      </div>
+      <Charts />
     </div>
   )
 }

@@ -40,7 +40,7 @@ function LoginPage() {
       password: data.get("password"),
     };
 
-    const response = await axios.post("https://internship-db-server-kxqk.onrender.com/login", dataJson);
+    const response = await axios.post("http://localhost:24252/login", dataJson);
     const status = response.data.status;
     const msg = response.data.msg;
     console.log(response.data.data);

@@ -28,7 +28,7 @@ function PayloadCard({ payload }) {
   useEffect(() => {
     const fetchCompanyDetails = async () => {
       const details = await axios.post(
-        "https://internship-db-server-kxqk.onrender.com/fetchCoDetails",
+        "http://localhost:24252/fetchCoDetails",
         {
           co_id: payload.co_id,
         }
@@ -56,7 +56,7 @@ function PayloadCard({ payload }) {
 
     if (will.isConfirmed) {
       const { data } = await axios.post(
-        "https://internship-db-server-kxqk.onrender.com/manageWishList",
+        "http://localhost:24252/manageWishList",
         {
           username: userData.username,
           action,
@@ -114,7 +114,7 @@ function PayloadCard({ payload }) {
           });
           if (con_.value) {
             axios
-              .post("https://internship-db-server-kxqk.onrender.com/editCo", {
+              .post("http://localhost:24252/editCo", {
                 action,
                 co_id: data.co_id,
                 update: value,
@@ -151,7 +151,7 @@ function PayloadCard({ payload }) {
       }).then((result) => {
         if (result.isConfirmed) {
           axios
-            .post("https://internship-db-server-kxqk.onrender.com/editCo", {
+            .post("http://localhost:24252/editCo", {
               action,
               std_id: data.std_id,
               co_id: data.co_id,
