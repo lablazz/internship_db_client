@@ -20,7 +20,7 @@ function Wishlish() {
 
   useEffect(() => {
     const fetchWishlist = async () => {
-      const response = await axios.post("http://localhost:24252/getWishlist", {
+      const response = await axios.post("https://server.stat-interndb.com/getWishlist", {
         username: userData.username,
       });
       if (response.data.status == "founded") {

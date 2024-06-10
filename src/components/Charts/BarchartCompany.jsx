@@ -18,7 +18,7 @@ function BarchartCompany() {
   useEffect(() => {
     const fetchPrv = async () => {
       const response = await axios.get(
-        "http://localhost:24252/data?col=company"
+        "https://server.stat-interndb.com/data?col=company"
       );
       if (response.statusText == "OK") {
         // console.log(response.data)

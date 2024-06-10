@@ -19,7 +19,7 @@ function PiechartWorkDetail() {
 
   useEffect(() => {
     const fetchData = () => {
-      axios.get("http://localhost:24252/data?col=workDetail").then((res) => {
+      axios.get("https://server.stat-interndb.com/data?col=workDetail").then((res) => {
         setDT(cleanData(res.data));
         setCOLORS(generateColors(res.data?.length));
       });
@@ -37,8 +37,8 @@ function PiechartWorkDetail() {
     axios
       .get(
         data == ""
-          ? "http://localhost:24252/data?col=workDetail"
-          : "http://localhost:24252/data?col=workDetail&id=" + data
+          ? "https://server.stat-interndb.com/data?col=workDetail"
+          : "https://server.stat-interndb.com/data?col=workDetail&id=" + data
       )
       .then((res) => {
         setDT(cleanData(res.data));

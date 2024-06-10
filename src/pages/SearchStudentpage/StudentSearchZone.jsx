@@ -35,7 +35,7 @@ function StudentSearchZone() {
   const fetchResult = async (query) => {
     await axios
       .post(
-        "http://localhost:24252/studentquery",
+        "https://server.stat-interndb.com/studentquery",
         query
       )
       .then((res) => {

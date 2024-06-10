@@ -28,7 +28,7 @@ function PayloadCard({ payload }) {
   useEffect(() => {
     const fetchCompanyDetails = async () => {
       const details = await axios.post(
-        "http://localhost:24252/fetchCoDetails",
+        "https://server.stat-interndb.com/fetchCoDetails",
         {
           co_id: payload.co_id,
         }
@@ -56,7 +56,7 @@ function PayloadCard({ payload }) {
 
     if (will.isConfirmed) {
       const { data } = await axios.post(
-        "http://localhost:24252/manageWishList",
+        "https://server.stat-interndb.com/manageWishList",
         {
           username: userData.username,
           action,
@@ -114,7 +114,7 @@ function PayloadCard({ payload }) {
           });
           if (con_.value) {
             axios
-              .post("http://localhost:24252/editCo", {
+              .post("https://server.stat-interndb.com/editCo", {
                 action,
                 co_id: data.co_id,
                 update: value,
@@ -151,7 +151,7 @@ function PayloadCard({ payload }) {
       }).then((result) => {
         if (result.isConfirmed) {
           axios
-            .post("http://localhost:24252/editCo", {
+            .post("https://server.stat-interndb.com/editCo", {
               action,
               std_id: data.std_id,
               co_id: data.co_id,

@@ -14,7 +14,7 @@ function DocumentstoresTEA() {
 
   useEffect(() => {
     const fetchDocs = async () => {
-      const response = await axios.post("http://localhost:24252/getfiles");
+      const response = await axios.post("https://server.stat-interndb.com/getfiles");
       const { status, data } = response.data;
       // console.log(response)
       if (status == "success") {
@@ -36,7 +36,7 @@ function DocumentstoresTEA() {
     let docsName = data.get("docsName");
     let docsLink = data.get("docsLink");
     await axios
-      .post("http://localhost:24252/docsManage", {
+      .post("https://server.stat-interndb.com/docsManage", {
         action: "add",
         docsName,
         docsLink,
@@ -71,7 +71,7 @@ function DocumentstoresTEA() {
       showCancelButton: true
     }).then((con_)=>{
       if (con_.isConfirmed) {
-        axios.post('http://localhost:24252/docsManage', {action: 'del', docsName: name, docsLink: link})
+        axios.post('https://server.stat-interndb.com/docsManage', {action: 'del', docsName: name, docsLink: link})
         .then((response)=>{
           const {status, msg} = response.data
           if (status == 'success') {
