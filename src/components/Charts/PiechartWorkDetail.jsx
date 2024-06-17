@@ -20,6 +20,7 @@ function PiechartWorkDetail() {
   useEffect(() => {
     const fetchData = () => {
       axios.get("https://internship-db-server-kxqk.onrender.com/data?col=workDetail").then((res) => {
+        console.log(res.data)
         setDT(cleanData(res.data));
         setCOLORS(generateColors(res.data?.length));
       });

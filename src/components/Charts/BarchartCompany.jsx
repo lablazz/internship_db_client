@@ -14,19 +14,34 @@ import {
 
 function BarchartCompany() {
   const [data, setDT] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchPrv = async () => {
-      const response = await axios.get(
-        "https://internship-db-server-kxqk.onrender.com/data?col=company"
-      );
-      if (response.statusText == "OK") {
-        // console.log(response.data)
-        setDT(response.data);
+    const fetchDT = async () => {
+      try {
+        const res = await axios.get("https://internship-db-server-kxqk.onrender.com/data?col=company")
+        .then((res)=>{
+          // console.log(res.data);
+          setDT(res.data)
+        })
+      } catch (err) {
+        setError(err);
+        setDT([]);
+      } finally {
+        setLoading(false);
       }
     };
-    fetchPrv();
+    fetchDT();
   }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
