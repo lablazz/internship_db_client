@@ -17,7 +17,7 @@ function BarchartWishlist() {
 
   useEffect(() => {
     const fetchDT = () => {
-      axios.get("https://server.stat-interndb.com/data?col=wishlist").then((res) => {
+      axios.get("https://internship-db-server-kxqk.onrender.com/data?col=wishlist").then((res) => {
         if (res.statusText == "OK") {
           setDT(res.data);
         }

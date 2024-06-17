@@ -35,7 +35,7 @@ function StudentSearchZone() {
   const fetchResult = async (query) => {
     await axios
       .post(
-        "https://server.stat-interndb.com/studentquery",
+        "https://internship-db-server-kxqk.onrender.com/studentquery",
         query
       )
       .then((res) => {

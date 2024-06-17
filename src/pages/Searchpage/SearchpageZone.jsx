@@ -41,7 +41,7 @@ function SearchpageZone() {
     };
     const fetchResult = async () => {
       const response = await axios.post(
-        "https://server.stat-interndb.com/fetchSearchResult",
+        "https://internship-db-server-kxqk.onrender.com/fetchSearchResult",
         query
       );
       if (response.data.status === "no match") {
@@ -66,7 +66,7 @@ function SearchpageZone() {
         grov: false,
       }
       const response = await axios.post(
-        "https://server.stat-interndb.com/fetchSearchResult",
+        "https://internship-db-server-kxqk.onrender.com/fetchSearchResult",
         query
       );
       if (response.data.status === "no match") {
@@ -80,7 +80,7 @@ function SearchpageZone() {
 
   useEffect(() => {
     const prvFetch = async () => {
-      const response = await axios.post("https://server.stat-interndb.com/fetchprv");
+      const response = await axios.post("https://internship-db-server-kxqk.onrender.com/fetchprv");
       setPrvMenus(response.data.data);
     };
 

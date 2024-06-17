@@ -15,7 +15,7 @@ function CountdownSTD() {
     const fetchUpcomingEvent = async () => {
       try {
         const response = await axios.post(
-          "https://server.stat-interndb.com/upcoming-event"
+          "https://internship-db-server-kxqk.onrender.com/upcoming-event"
         );
         if (response.data.status == 'ok') {
           setUpcomingEvent(response.data.event);

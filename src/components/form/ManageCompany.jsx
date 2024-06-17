@@ -13,7 +13,7 @@ function ManageCompany() {
   useEffect(() => {
     const fetchCompany = () => {
       axios
-        .post("https://server.stat-interndb.com/manageCompany", {
+        .post("https://internship-db-server-kxqk.onrender.com/manageCompany", {
           action: "fetch",
           userQuery: "",
         })
@@ -48,7 +48,7 @@ function ManageCompany() {
     const formData = new FormData(event.target);
     const id = formData.get("company");
     axios
-      .post("https://server.stat-interndb.com/manageCompany", {
+      .post("https://internship-db-server-kxqk.onrender.com/manageCompany", {
         action: "fetch",
         userQuery: id,
       })
@@ -81,7 +81,7 @@ function ManageCompany() {
       if (res.isConfirmed) {
         setResult("onLoad");
         axios
-          .post("https://server.stat-interndb.com/manageCompany", {
+          .post("https://internship-db-server-kxqk.onrender.com/manageCompany", {
             action: "del",
             data,
           })
